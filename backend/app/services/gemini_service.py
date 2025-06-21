@@ -17,7 +17,7 @@ def _generate_response_sync(prompt: str):
 # Generate quiz questions
 async def generate_quiz_questions(level: str):
     prompt = f"""
-    Generate 10 quiz questions for a {level} level quiz. Each question should have:
+    Generate 10 unique quiz questions for a {level} level quiz. Each question should have:
     - A clear question text
     - Four multiple-choice options
     - The index of the correct answer (0-3)
@@ -55,7 +55,7 @@ async def get_quiz_explanation(quiz_id: str, question_index: int, question: str,
     try:
         question_data = questions[question_index]
         prompt = f"""
-        Provide a detailed explanation for the following quiz question:
+        Provide a detailed explanation for the following quiz question within 100 words:
 
         Question {question_index + 1}: {question_data['question']}
         Options: {', '.join(question_data['options'])}

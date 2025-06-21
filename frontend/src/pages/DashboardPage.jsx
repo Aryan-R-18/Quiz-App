@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'; // Added useEffect
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../auth/AuthContext';
-import { generateQuiz } from '../api/quizApi';
+import { generateQuiz } from '../api/quizapi';
 
 // Define a cooldown period in milliseconds (e.g., 60 seconds)
 // This should be at least 60 seconds to respect minute-based limits,
@@ -68,53 +68,61 @@ function DashboardPage() {
 
   const isButtonDisabled = isGenerating || cooldownRemaining > 0;
 
-  return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6">Hello, {user.name}</h2>
-        <div className="mb-4">
-          <label className="block mb-2">Select Level:</label>
-          <select
-            value={level}
-            onChange={(e) => setLevel(e.target.value)}
-            className="w-full p-2 border rounded"
-            disabled={isGenerating} // Disable select while generating
-          >
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-          </select>
-        </div>
-        <button
-          onClick={handleGenerateQuiz}
-          className={`w-full p-2 rounded mb-4 ${
-            isButtonDisabled ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-600'
-          } text-white`}
-          disabled={isButtonDisabled}
-        >
-          {isGenerating
-            ? 'Generating Quiz...'
-            : cooldownRemaining > 0
-              ? `Please wait ${cooldownRemaining}s`
-              : 'Generate Quiz'}
-        </button>
+ return (
+  <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-indigo-50 to-blue-100 px-4">
+    <div className="bg-white p-10 rounded-3xl shadow-2xl w-full max-w-md animate-fade-in-up transition-all duration-500">
+      <h2 className="text-3xl font-extrabold text-gray-800 mb-6 text-center">
+        👋 Hello, {user.name}
+      </h2>
 
-        {/* Optional: Add a more prominent message if the user hits the cooldown */}
-        {cooldownRemaining > 0 && !isGenerating && (
-          <p className="text-sm text-red-600 mt-2 text-center">
-            You can generate another quiz in {cooldownRemaining} seconds.
-          </p>
-        )}
-
-        <button
-          onClick={logout}
-          className="w-full bg-red-500 text-white p-2 rounded hover:bg-red-600"
+      <div className="mb-6">
+        <label className="block text-sm font-medium text-gray-700 mb-2">
+          Select Level:
+        </label>
+        <select
+          value={level}
+          onChange={(e) => setLevel(e.target.value)}
+          disabled={isGenerating}
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-400 focus:outline-none transition"
         >
-          Logout
-        </button>
+          <option value="easy">🟢 Easy</option>
+          <option value="medium">🟡 Medium</option>
+          <option value="hard">🔴 Hard</option>
+        </select>
       </div>
+
+      <button
+        onClick={handleGenerateQuiz}
+        disabled={isButtonDisabled}
+        className={`w-full py-2 rounded-lg font-semibold shadow-md transition-all duration-300 ${
+          isButtonDisabled
+            ? 'bg-gray-300 cursor-not-allowed text-gray-600'
+            : 'bg-green-600 hover:bg-lime-400 text-white'
+        }`}
+      >
+        {isGenerating
+          ? '✨ Generating Quiz...'
+          : cooldownRemaining > 0
+          ? `⏳ Wait ${cooldownRemaining}s`
+          : '🎯 Generate Quiz'}
+      </button>
+
+      {cooldownRemaining > 0 && !isGenerating && (
+        <p className="text-sm text-red-600 mt-3 text-center animate-pulse">
+          You can generate another quiz in {cooldownRemaining} seconds.
+        </p>
+      )}
+
+      <button
+        onClick={logout}
+        className="w-full bg-yellow-800 hover:bg-red-400 text-white py-2 rounded-lg mt-6 shadow-md transition duration-300"
+      >
+        🚪 Logout
+      </button>
     </div>
-  );
+  </div>
+);
+
 }
 
 export default DashboardPage;
