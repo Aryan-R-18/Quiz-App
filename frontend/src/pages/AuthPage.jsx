@@ -26,9 +26,9 @@ function AuthPage() {
   };
 
   return (
-  <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-green-300 via-blue-500 to-purple-600">
+  <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-stone-500 via-fuchsia-200 to-stone-500">
     <div className="bg-white px-10 py-8 rounded-2xl shadow-xl w-full max-w-md">
-      <h2 className="text-2xl font-extrabold text-center text-gray-800 mb-6">Login / Sign Up</h2>
+      <h2 className="text-2xl font-extrabold text-center text-fuchsia-950 mb-6">Login to Visit Dashboard</h2>
 
       {error && <p className="text-red-600 text-sm text-center mb-4">{error}</p>}
 
@@ -73,7 +73,7 @@ function AuthPage() {
         />
         <button
           onClick={handleSubmit}
-          className="w-full bg-green-500 hover:bg-green-700 text-white font-semibold py-2 rounded-md shadow-md transition duration-300"
+          className="w-full bg-stone-600 hover:bg-fuchsia-900 text-white font-semibold py-2 rounded-md shadow-md transition duration-300"
         >
           Login / Sign Up
         </button>

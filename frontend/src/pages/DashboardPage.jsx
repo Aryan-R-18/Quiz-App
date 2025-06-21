@@ -71,13 +71,13 @@ function DashboardPage() {
  return (
   <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-stone-500 via-fuchsia-200 to-stone-500 px-4">
     <div className="bg-white p-10 rounded-3xl shadow-xl w-full max-w-md animate-fade-in-up transition-all duration-500">
-      <h2 className="text-3xl font-bold text-center text-indigo-700 mb-8 tracking-tight">
+      <h2 className="text-3xl font-bold text-center text-stone-700 mb-8 tracking-tight">
         👋 Welcome, {user.name}
       </h2>
 
       {/* Level Selection */}
       <div className="mb-6">
-        <label className="block text-sm font-semibold text-gray-600 mb-2">
+        <label className="block text-sm font-semibold text-pink-950 mb-2">
           Select Difficulty Level:
         </label>
         <div className="relative">
@@ -104,7 +104,7 @@ function DashboardPage() {
         className={`w-full py-3 rounded-xl font-semibold shadow-lg transition-all duration-300 text-white ${
           isButtonDisabled
             ? 'bg-gray-300 cursor-not-allowed text-gray-600'
-            : 'bg-gradient-to-r from-green-500 to-lime-500 hover:from-green-600 hover:to-lime-600'
+            : 'bg-gradient-to-r from-stone-500 to-fuchsia-600 hover:from-fuchsia-400 hover:to-stone-400'
         }`}
       >
         {isGenerating
@@ -124,7 +124,7 @@ function DashboardPage() {
       {/* Logout */}
       <button
         onClick={logout}
-        className="w-full bg-gradient-to-r from-yellow-600 to-amber-500 hover:from-red-500 hover:to-red-600 text-white font-semibold py-3 mt-6 rounded-xl shadow-lg transition duration-300"
+        className="w-full bg-gradient-to-r from-fuchisa-500 to-stone-600 hover:from-stone-700 hover:to-fuchsia-400 text-white font-semibold py-3 mt-6 rounded-xl shadow-lg transition duration-300"
       >
         🚪 Logout
       </button>
