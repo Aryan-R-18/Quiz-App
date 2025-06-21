@@ -33,17 +33,17 @@ function ResultPage() {
   }
 
   return (
-  <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
+  <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-stone-500 via-fuchsia-200 to-stone-500 p-4">
     <div className="bg-white p-10 rounded-3xl shadow-2xl w-full max-w-3xl animate-fade-in-up transition-all duration-500">
       
       {/* Quiz Header */}
-      <h2 className="text-3xl font-extrabold text-center text-pink-400 mb-6">📊 Quiz Results</h2>
+      <h2 className="text-3xl font-extrabold text-center text-stone-600 mb-6">📊 Quiz Results</h2>
       <p className="text-xl text-center mb-8 text-gray-700">
         ✅ Your Score: <span className="font-bold text-pink-600">{result.score} / {quizData.questions.length}</span>
       </p>
 
       {/* Review Section */}
-      <h3 className="text-2xl font-semibold text-gray-800 mb-4">📝 Review</h3>
+      <h3 className="text-2xl font-semibold text-fuchsia-900 mb-4">📝 Review</h3>
       <div className="space-y-6">
         {quizData.questions.map((q, index) => {
           const userAnswerIndex = result.answers?.[index];
@@ -74,7 +74,7 @@ function ResultPage() {
       </div>
 
       {/* Ask the Bot Section */}
-      <h3 className="text-2xl font-semibold text-gray-800 mt-10 mb-4">🤖 Ask the Help Bot</h3>
+      <h3 className="text-2xl font-semibold text-fuchsia-950 mt-10 mb-4">🤖 Ask the Help Bot</h3>
       <div className="space-y-4">
         <select
           value={questionIndex}
@@ -97,7 +97,7 @@ function ResultPage() {
 
         <button
           onClick={handleBotAsk}
-          className="w-full bg-gradient-to-r from-pink-500 to-rose-600 hover:from-rose-500 hover:to-pink-600 text-white font-bold py-3 rounded-xl shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:scale-[1.02]"
+          className="w-full bg-gradient-to-r from-stone-700 to-fuchsia-400 hover:from-fuchsia-400 hover:to-stone-400 text-white font-bold py-3 rounded-xl shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:scale-[1.02]"
         >
           💬 Ask Bot
         </button>

@@ -69,35 +69,42 @@ function DashboardPage() {
   const isButtonDisabled = isGenerating || cooldownRemaining > 0;
 
  return (
-  <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-indigo-50 to-blue-100 px-4">
-    <div className="bg-white p-10 rounded-3xl shadow-2xl w-full max-w-md animate-fade-in-up transition-all duration-500">
-      <h2 className="text-3xl font-extrabold text-gray-800 mb-6 text-center">
-        👋 Hello, {user.name}
+  <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-stone-500 via-fuchsia-200 to-stone-500 px-4">
+    <div className="bg-white p-10 rounded-3xl shadow-xl w-full max-w-md animate-fade-in-up transition-all duration-500">
+      <h2 className="text-3xl font-bold text-center text-indigo-700 mb-8 tracking-tight">
+        👋 Welcome, {user.name}
       </h2>
 
+      {/* Level Selection */}
       <div className="mb-6">
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          Select Level:
+        <label className="block text-sm font-semibold text-gray-600 mb-2">
+          Select Difficulty Level:
         </label>
-        <select
-          value={level}
-          onChange={(e) => setLevel(e.target.value)}
-          disabled={isGenerating}
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-400 focus:outline-none transition"
-        >
-          <option value="easy">🟢 Easy</option>
-          <option value="medium">🟡 Medium</option>
-          <option value="hard">🔴 Hard</option>
-        </select>
+        <div className="relative">
+          <select
+            value={level}
+            onChange={(e) => setLevel(e.target.value)}
+            disabled={isGenerating}
+            className="appearance-none w-full bg-gray-50 border border-gray-300 text-gray-800 px-4 py-2 pr-10 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 transition cursor-pointer disabled:opacity-60"
+          >
+            <option value="easy">🟢 Easy</option>
+            <option value="medium">🟡 Medium</option>
+            <option value="hard">🔴 Hard</option>
+          </select>
+          <div className="absolute top-2.5 right-3 pointer-events-none text-gray-500">
+            ▼
+          </div>
+        </div>
       </div>
 
+      {/* Generate Quiz Button */}
       <button
         onClick={handleGenerateQuiz}
         disabled={isButtonDisabled}
-        className={`w-full py-2 rounded-lg font-semibold shadow-md transition-all duration-300 ${
+        className={`w-full py-3 rounded-xl font-semibold shadow-lg transition-all duration-300 text-white ${
           isButtonDisabled
             ? 'bg-gray-300 cursor-not-allowed text-gray-600'
-            : 'bg-green-600 hover:bg-lime-400 text-white'
+            : 'bg-gradient-to-r from-green-500 to-lime-500 hover:from-green-600 hover:to-lime-600'
         }`}
       >
         {isGenerating
@@ -107,15 +114,17 @@ function DashboardPage() {
           : '🎯 Generate Quiz'}
       </button>
 
+      {/* Cooldown Notice */}
       {cooldownRemaining > 0 && !isGenerating && (
-        <p className="text-sm text-red-600 mt-3 text-center animate-pulse">
+        <p className="text-sm text-red-600 mt-4 text-center animate-pulse">
           You can generate another quiz in {cooldownRemaining} seconds.
         </p>
       )}
 
+      {/* Logout */}
       <button
         onClick={logout}
-        className="w-full bg-yellow-800 hover:bg-red-400 text-white py-2 rounded-lg mt-6 shadow-md transition duration-300"
+        className="w-full bg-gradient-to-r from-yellow-600 to-amber-500 hover:from-red-500 hover:to-red-600 text-white font-semibold py-3 mt-6 rounded-xl shadow-lg transition duration-300"
       >
         🚪 Logout
       </button>

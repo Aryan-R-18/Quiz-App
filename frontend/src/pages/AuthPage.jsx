@@ -26,7 +26,7 @@ function AuthPage() {
   };
 
   return (
-  <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+  <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-green-300 via-blue-500 to-purple-600">
     <div className="bg-white px-10 py-8 rounded-2xl shadow-xl w-full max-w-md">
       <h2 className="text-2xl font-extrabold text-center text-gray-800 mb-6">Login / Sign Up</h2>
 
@@ -35,15 +35,20 @@ function AuthPage() {
       <div className="mb-6">
         <GoogleOAuthProvider clientId="845596916456-0jo02etn3adbko3sn780192trp46tv35.apps.googleusercontent.com">
           <div className="flex justify-center">
+            <div className="rounded-full overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105">
             <GoogleLogin
               onSuccess={handleGoogleSuccess}
               onError={() => setError('Google login failed')}
-              theme="outline"
-              size="large"
-            />
-          </div>
-        </GoogleOAuthProvider>
+            theme="filled_black"
+            size="large"
+            shape="pill"
+            width="280"
+        />
       </div>
+    </div>
+  </GoogleOAuthProvider>
+</div>
+
 
       <div className="flex items-center justify-between mb-6">
         <hr className="border-t border-gray-300 w-full" />
