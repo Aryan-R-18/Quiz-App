@@ -17,7 +17,7 @@ def _generate_response_sync(prompt: str):
 # Generate quiz questions
 async def generate_quiz_questions(level: str):
     prompt = f"""
-    Generate 10 unique quiz questions for a {level} level quiz. Each question should have:
+    Generate 10 unique quiz questions everytime not even related to past asked questions for a {level} level quiz. Each question should have:
     - A clear question text
     - Four multiple-choice options
     - The index of the correct answer (0-3)
