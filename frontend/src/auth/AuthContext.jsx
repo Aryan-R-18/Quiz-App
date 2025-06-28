@@ -5,6 +5,8 @@ import axios from 'axios';
 
 export const AuthContext = createContext();
 
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
@@ -23,27 +25,27 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post('http://localhost:8000/api/v1/auth/login', { email, password });
+      const response = await axios.post(`${BASE_URL}/api/v1/auth/login`, { email, password });
       const { token } = response.data;
       localStorage.setItem('token', token);
       const decoded = jwtDecode(token);
       setUser({ name: decoded.name, email: decoded.email });
       navigate('/dashboard');
     } catch (error) {
-      throw error.response.data.detail || 'Login failed';
+      throw error.response?.data?.detail || 'Login failed';
     }
   };
 
   const googleLogin = async (credential) => {
     try {
-      const response = await axios.post('http://localhost:8000/api/v1/auth/google', { credential });
+      const response = await axios.post(`${BASE_URL}/api/v1/auth/google`, { credential });
       const { token } = response.data;
       localStorage.setItem('token', token);
       const decoded = jwtDecode(token);
       setUser({ name: decoded.name, email: decoded.email });
       navigate('/dashboard');
     } catch (error) {
-      throw error.response.data.detail || 'Google login failed';
+      throw error.response?.data?.detail || 'Google login failed';
     }
   };
 
